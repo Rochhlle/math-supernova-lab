@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { BookOpen, Lightbulb, Formula } from 'lucide-react';
+import { BookOpen, Lightbulb, Calculator } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 import { domains, getDomainSubtopics, getTopicContent } from '../data/mathDomains';
@@ -86,7 +86,7 @@ const LearnMode = () => {
             {content.formulas.length > 0 && (
               <div className="backdrop-blur-sm bg-white/10 rounded-xl p-6 border border-white/20 shadow-xl">
                 <div className="flex items-center mb-4">
-                  <Formula className="h-5 w-5 mr-2 text-blue-400" />
+                  <Calculator className="h-5 w-5 mr-2 text-blue-400" />
                   <h3 className="text-lg font-semibold text-white">Key Formulas</h3>
                 </div>
                 <div className="space-y-4">
