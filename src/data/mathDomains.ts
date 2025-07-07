@@ -1,4 +1,3 @@
-
 export interface Domain {
   id: string;
   name: string;
@@ -22,7 +21,7 @@ export const domains: Domain[] = [
     icon: '➕',
     subtopics: [
       'Basic Operations',
-      'Percentages',
+      'Percentages', 
       'Powers & Roots',
       'Factorials',
     ],
@@ -51,14 +50,24 @@ export const domains: Domain[] = [
     ],
   },
   {
-    id: 'graphing',
-    name: 'Graphing',
-    icon: '📊',
+    id: 'geometry-topology',
+    name: 'Geometry & Topology',
+    icon: '📐',
     subtopics: [
-      'Linear Functions',
-      'Quadratic Functions',
-      'Trigonometric Functions',
-      'Parametric Plots',
+      'Euclidean Geometry',
+      'Coordinate Geometry',
+      'Manifolds',
+    ],
+  },
+  {
+    id: 'number-theory',
+    name: 'Number Theory',
+    icon: '🔢',
+    subtopics: [
+      'Prime Numbers',
+      'GCD & LCM',
+      'Modular Arithmetic',
+      'Divisibility',
     ],
   },
   {
@@ -84,14 +93,239 @@ export const domains: Domain[] = [
     ],
   },
   {
-    id: 'number-theory',
-    name: 'Number Theory',
+    id: 'discrete-math',
+    name: 'Discrete Math',
+    icon: '🔗',
+    subtopics: [
+      'Graph Theory',
+      'Combinatorics',
+    ],
+  },
+  {
+    id: 'differential-equations',
+    name: 'Differential Equations',
+    icon: '🌊',
+    subtopics: [
+      'ODEs',
+      'PDEs',
+    ],
+  },
+  {
+    id: 'emerging-fields',
+    name: 'Emerging Fields',
+    icon: '🚀',
+    subtopics: [
+      'Machine Learning Math',
+      'Information Theory',
+    ],
+  },
+  {
+    id: 'abstract-algebra',
+    name: 'Abstract Algebra',
+    icon: '🧩',
+    subtopics: [
+      'Group Theory',
+      'Ring Theory',
+      'Field Theory',
+      'Module Theory',
+      'Galois Theory',
+      'Category Theory',
+    ],
+  },
+  {
+    id: 'real-complex-analysis',
+    name: 'Real & Complex Analysis',
+    icon: '∞',
+    subtopics: [
+      'Metric Spaces',
+      'Uniform Convergence',
+      'Analytic Continuation',
+      'Cauchy Sequences',
+      'Residue Theorem',
+    ],
+  },
+  {
+    id: 'topology',
+    name: 'Topology',
+    icon: '🔄',
+    subtopics: [
+      'Open/Closed Sets',
+      'Compactness & Connectedness',
+      'Homeomorphism',
+      'Homotopy Theory',
+      'Fundamental Group',
+    ],
+  },
+  {
+    id: 'differential-geometry',
+    name: 'Differential Geometry',
+    icon: '🌐',
+    subtopics: [
+      'Manifolds',
+      'Curvature & Torsion',
+      'Riemannian Metrics',
+      'Geodesics',
+      'Lie Groups',
+    ],
+  },
+  {
+    id: 'measure-theory',
+    name: 'Measure Theory & Integration',
+    icon: '📏',
+    subtopics: [
+      'Lebesgue Integral',
+      'Sigma-algebras',
+      'Measurable Functions',
+      'Fubini\'s Theorem',
+    ],
+  },
+  {
+    id: 'functional-analysis',
+    name: 'Functional Analysis',
+    icon: '🔬',
+    subtopics: [
+      'Normed Spaces',
+      'Banach & Hilbert Spaces',
+      'Linear Operators',
+      'Spectral Theory',
+    ],
+  },
+  {
+    id: 'partial-differential-equations',
+    name: 'Partial Differential Equations',
+    icon: '🌊',
+    subtopics: [
+      'Wave Equation',
+      'Heat Equation',
+      'Laplace\'s Equation',
+      'Method of Characteristics',
+      'Green\'s Functions',
+    ],
+  },
+  {
+    id: 'fourier-laplace',
+    name: 'Fourier & Laplace Transforms',
+    icon: '〰️',
+    subtopics: [
+      'Fourier Series',
+      'Discrete Fourier Transform (DFT)',
+      'Laplace Transform',
+      'Convolution Theorems',
+      'Inverse Transforms',
+    ],
+  },
+  {
+    id: 'numerical-methods',
+    name: 'Numerical Methods',
     icon: '🔢',
     subtopics: [
-      'Prime Numbers',
-      'GCD & LCM',
-      'Modular Arithmetic',
-      'Divisibility',
+      'Finite Difference Methods',
+      'Newton-Raphson',
+      'LU Decomposition',
+      'Runge-Kutta Methods',
+      'Eigenvalue Approximation',
+    ],
+  },
+  {
+    id: 'optimization',
+    name: 'Optimization & Operations Research',
+    icon: '📊',
+    subtopics: [
+      'Linear Programming (Simplex Method)',
+      'Nonlinear Optimization',
+      'Convex Analysis',
+      'Integer Programming',
+      'Duality Theory',
+    ],
+  },
+  {
+    id: 'probability-stochastic',
+    name: 'Probability & Stochastic Processes',
+    icon: '🎲',
+    subtopics: [
+      'Bayes\' Theorem',
+      'Markov Chains',
+      'Brownian Motion',
+      'Poisson Process',
+      'Ito Calculus',
+    ],
+  },
+  {
+    id: 'set-theory-logic',
+    name: 'Set Theory & Logic',
+    icon: '🔢',
+    subtopics: [
+      'Zermelo-Fraenkel Axioms (ZF/ZFC)',
+      'Ordinals & Cardinals',
+      'Gödel\'s Incompleteness Theorems',
+      'Lambda Calculus',
+    ],
+  },
+  {
+    id: 'combinatorics-graph-theory',
+    name: 'Combinatorics & Graph Theory',
+    icon: '🕸️',
+    subtopics: [
+      'Generating Functions',
+      'Ramsey Theory',
+      'Graph Coloring',
+      'Matching & Network Flows',
+    ],
+  },
+  {
+    id: 'information-theory-crypto',
+    name: 'Information Theory & Cryptography',
+    icon: '🔐',
+    subtopics: [
+      'Entropy & Mutual Information',
+      'Huffman Coding',
+      'RSA Encryption',
+      'Elliptic Curve Cryptography',
+    ],
+  },
+  {
+    id: 'mathematical-physics',
+    name: 'Mathematical Physics',
+    icon: '⚛️',
+    subtopics: [
+      'Quantum Field Theory',
+      'Special & General Relativity (Tensor Math)',
+      'Schrödinger Equation',
+      'Lagrangian/Hamiltonian Mechanics',
+    ],
+  },
+  {
+    id: 'chaos-theory',
+    name: 'Chaos Theory & Dynamical Systems',
+    icon: '🌀',
+    subtopics: [
+      'Logistic Map',
+      'Bifurcation Diagrams',
+      'Strange Attractors',
+      'Lyapunov Exponents',
+    ],
+  },
+  {
+    id: 'machine-learning-math',
+    name: 'Machine Learning Mathematics',
+    icon: '🤖',
+    subtopics: [
+      'Gradient Descent',
+      'Backpropagation',
+      'Loss Functions',
+      'Convex Optimization',
+      'Eigen decomposition in PCA',
+    ],
+  },
+  {
+    id: 'graphing',
+    name: 'Graphing',
+    icon: '📊',
+    subtopics: [
+      'Linear Functions',
+      'Quadratic Functions',
+      'Trigonometric Functions',
+      'Parametric Plots',
     ],
   },
 ];
@@ -187,6 +421,46 @@ const topicContentDatabase: Record<string, Record<string, TopicContent>> = {
       examples: [
         { problem: '\\text{Mean of } [2, 4, 6, 8, 10]', solution: '6' },
         { problem: '\\text{Median of } [1, 3, 5, 7, 9]', solution: '5' },
+      ],
+    },
+  },
+  'Abstract Algebra': {
+    'Group Theory': {
+      definition: 'Group theory studies algebraic structures known as groups, which consist of a set equipped with an operation that combines any two elements to form a third element.',
+      formulas: [
+        '(G, \\circ) \\text{ is a group if: closure, associativity, identity, inverse}',
+        '|G| = \\text{order of group G}',
+        '\\text{Lagrange: } |H| \\text{ divides } |G| \\text{ for subgroup H}',
+      ],
+      examples: [
+        { problem: '\\text{Show } (\\mathbb{Z}, +) \\text{ is a group}', solution: '\\text{Satisfies all group axioms}' },
+        { problem: '\\text{Order of } \\mathbb{Z}_5', solution: '5' },
+      ],
+    },
+  },
+  'Real & Complex Analysis': {
+    'Metric Spaces': {
+      definition: 'A metric space is a set equipped with a metric (distance function) that defines the distance between any two points in the set.',
+      formulas: [
+        'd(x,y) = d(y,x) \\text{ (Symmetry)}',
+        'd(x,z) \\leq d(x,y) + d(y,z) \\text{ (Triangle Inequality)}',
+        'd(x,y) = 0 \\iff x = y \\text{ (Identity)}',
+      ],
+      examples: [
+        { problem: '\\text{Euclidean metric: } d(x,y) = \\sqrt{\\sum(x_i-y_i)^2}', solution: '\\text{Standard distance formula}' },
+      ],
+    },
+  },
+  'Machine Learning Mathematics': {
+    'Gradient Descent': {
+      definition: 'Gradient descent is an optimization algorithm used to minimize a function by iteratively moving in the direction of steepest descent.',
+      formulas: [
+        '\\theta_{t+1} = \\theta_t - \\alpha \\nabla J(\\theta_t)',
+        '\\alpha = \\text{learning rate}',
+        '\\nabla J = \\text{gradient of cost function}',
+      ],
+      examples: [
+        { problem: '\\text{Update rule for linear regression}', solution: '\\theta_j := \\theta_j - \\alpha \\frac{\\partial J}{\\partial \\theta_j}' },
       ],
     },
   },
