@@ -1,4 +1,3 @@
-
 export interface Domain {
   id: string;
   name: string;
@@ -606,44 +605,234 @@ const topicContentDatabase: Record<string, Record<string, TopicContent>> = {
         { problem: '\\det\\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}', solution: '-2' },
       ],
     },
+    'Determinants': {
+      definition: 'A determinant is a scalar value that tells if a matrix is invertible and helps solve systems of equations. For a 2×2 matrix, det(A) = ad - bc. Determinants have important geometric interpretations including area and volume scaling.',
+      formulas: [
+        '\\det\\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} = ad - bc \\text{ (2×2)}',
+        '\\det(AB) = \\det(A) \\det(B)',
+        '\\det(A^T) = \\det(A)',
+        '\\det(A^{-1}) = \\frac{1}{\\det(A)}',
+      ],
+      examples: [
+        { problem: '\\det\\begin{pmatrix} 2 & 3 \\\\ 1 & 4 \\end{pmatrix}', solution: '8 - 3 = 5' },
+        { problem: '\\det\\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}', solution: '1' },
+        { problem: '\\text{Is } \\begin{pmatrix} 2 & 4 \\\\ 1 & 2 \\end{pmatrix} \\text{ invertible?}', solution: '\\text{No, det = 0}' },
+      ],
+    },
+    'Matrix Inverse': {
+      definition: 'Matrix A⁻¹ such that A·A⁻¹ = I. Only square matrices with non-zero determinant have inverses. The inverse is crucial for solving systems of linear equations and transformations.',
+      formulas: [
+        'A \\cdot A^{-1} = I',
+        'A^{-1} = \\frac{1}{\\det(A)} \\text{adj}(A) \\text{ (Adjugate method)}',
+        '\\text{For 2×2: } \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}^{-1} = \\frac{1}{ad-bc}\\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix}',
+      ],
+      examples: [
+        { problem: '\\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}^{-1}', solution: '\\frac{1}{-2}\\begin{pmatrix} 4 & -2 \\\\ -3 & 1 \\end{pmatrix} = \\begin{pmatrix} -2 & 1 \\\\ 1.5 & -0.5 \\end{pmatrix}' },
+        { problem: '\\text{Solve } AX = B \\text{ for } X', solution: 'X = A^{-1}B' },
+      ],
+    },
+    'Eigenvalues': {
+      definition: 'For a square matrix A, if Av = λv for some non-zero vector v, then λ is an eigenvalue and v is the corresponding eigenvector. They describe scaling behavior of linear transformations and are fundamental in many applications.',
+      formulas: [
+        'Av = \\lambda v \\text{ (Eigenvalue equation)}',
+        '\\det(A - \\lambda I) = 0 \\text{ (Characteristic equation)}',
+        '\\text{Eigenspace: } \\ker(A - \\lambda I)',
+        '\\text{Trace}(A) = \\sum \\lambda_i',
+      ],
+      examples: [
+        { problem: '\\text{Find eigenvalues of } \\begin{pmatrix} 2 & 1 \\\\ 0 & 3 \\end{pmatrix}', solution: '\\lambda = 2, 3' },
+        { problem: '\\text{Identity matrix eigenvalues}', solution: '\\text{All eigenvalues are 1}' },
+      ],
+    },
+  },
+  'Discrete Math': {
+    'Graph Theory': {
+      definition: 'A graph G=(V,E) consists of vertices (V) and edges (E) connecting them. Graph theory studies relationships and connections, with applications in computer science, networks, and optimization.',
+      formulas: [
+        '\\text{Handshaking Lemma: } \\sum \\deg(v) = 2|E|',
+        '\\text{Euler\'s Formula: } V - E + F = 2 \\text{ (planar graphs)}',
+        '\\text{Complete graph: } K_n \\text{ has } \\binom{n}{2} \\text{ edges}',
+        '\\text{Tree: } |E| = |V| - 1',
+      ],
+      examples: [
+        { problem: '\\text{Degree sum in graph with 5 edges}', solution: '\\text{Sum of degrees = 10}' },
+        { problem: '\\text{Complete graph } K_4 \\text{ edges}', solution: '\\binom{4}{2} = 6' },
+        { problem: '\\text{Tree with 7 vertices has how many edges?}', solution: '6' },
+      ],
+    },
+    'Combinatorics': {
+      definition: 'Study of counting, arrangements, and combinations. Includes permutations (ordered arrangements) and combinations (unordered selections). Essential for probability, algorithm analysis, and discrete mathematics.',
+      formulas: [
+        'P(n,r) = \\frac{n!}{(n-r)!} \\text{ (Permutations)}',
+        'C(n,r) = \\binom{n}{r} = \\frac{n!}{r!(n-r)!} \\text{ (Combinations)}',
+        '\\text{Pigeonhole Principle: } n+1 \\text{ objects in } n \\text{ boxes}',
+        '\\text{Inclusion-Exclusion: } |A \\cup B| = |A| + |B| - |A \\cap B|',
+      ],
+      examples: [
+        { problem: '\\text{Arrange 5 books in order}', solution: '5! = 120' },
+        { problem: '\\text{Choose 3 from 7 people}', solution: '\\binom{7}{3} = 35' },
+        { problem: '\\text{License plates: 2 letters, 3 digits}', solution: '26^2 \\times 10^3 = 676,000' },
+      ],
+    },
+  },
+  'Differential Equations': {
+    'ODEs': {
+      definition: 'Ordinary Differential Equations involve derivatives of functions of one variable. They describe rates of change and are fundamental in physics, engineering, biology, and economics.',
+      formulas: [
+        '\\frac{dy}{dx} + P(x)y = Q(x) \\text{ (First-order linear)}',
+        'y\' + py + qy = 0 \\text{ (Second-order homogeneous)}',
+        'y = Ce^{kx} \\text{ (Solution to } y\' = ky\\text{)}',
+        '\\text{Integrating factor: } \\mu(x) = e^{\\int P(x)dx}',
+      ],
+      examples: [
+        { problem: '\\frac{dy}{dx} = ky', solution: 'y = Ce^{kx}' },
+        { problem: '\\frac{dy}{dx} = y \\text{ with } y(0) = 1', solution: 'y = e^x' },
+        { problem: '\\text{Population growth model}', solution: '\\frac{dP}{dt} = rP' },
+      ],
+    },
+    'PDEs': {
+      definition: 'Partial Differential Equations involve partial derivatives of functions with multiple variables. They model phenomena like heat flow, wave propagation, and fluid dynamics.',
+      formulas: [
+        '\\frac{\\partial u}{\\partial t} = \\alpha \\frac{\\partial^2 u}{\\partial x^2} \\text{ (Heat equation)}',
+        '\\frac{\\partial^2 u}{\\partial t^2} = c^2 \\frac{\\partial^2 u}{\\partial x^2} \\text{ (Wave equation)}',
+        '\\nabla^2 u = 0 \\text{ (Laplace\'s equation)}',
+        '\\frac{\\partial u}{\\partial t} + u \\frac{\\partial u}{\\partial x} = 0 \\text{ (Transport equation)}',
+      ],
+      examples: [
+        { problem: '\\text{Heat diffusion in rod}', solution: '\\frac{\\partial u}{\\partial t} = k \\frac{\\partial^2 u}{\\partial x^2}' },
+        { problem: '\\text{Vibrating string}', solution: '\\frac{\\partial^2 u}{\\partial t^2} = c^2 \\frac{\\partial^2 u}{\\partial x^2}' },
+        { problem: '\\text{Steady-state temperature}', solution: '\\nabla^2 u = 0' },
+      ],
+    },
+  },
+  'Emerging Fields': {
+    'Machine Learning Math': {
+      definition: 'Mathematical foundations of machine learning including linear algebra (vectors, matrices, eigenvalues), calculus (derivatives, gradients), probability and statistics (distributions, likelihood), and optimization (convex functions, constraints).',
+      formulas: [
+        '\\text{Gradient Descent: } \\theta_{t+1} = \\theta_t - \\alpha \\nabla J(\\theta_t)',
+        '\\text{MSE Loss: } J = \\frac{1}{2m} \\sum_{i=1}^m (h_\\theta(x^{(i)}) - y^{(i)})^2',
+        '\\text{Sigmoid: } \\sigma(z) = \\frac{1}{1 + e^{-z}}',
+        '\\text{Backpropagation: } \\frac{\\partial J}{\\partial w} = \\frac{\\partial J}{\\partial a} \\frac{\\partial a}{\\partial z} \\frac{\\partial z}{\\partial w}',
+      ],
+      examples: [
+        { problem: '\\text{Linear regression gradient}', solution: '\\frac{\\partial J}{\\partial \\theta_j} = \\frac{1}{m} \\sum_{i=1}^m (h_\\theta(x^{(i)}) - y^{(i)})x_j^{(i)}' },
+        { problem: '\\text{Logistic regression}', solution: 'h_\\theta(x) = \\frac{1}{1 + e^{-\\theta^T x}}' },
+        { problem: '\\text{Neural network forward pass}', solution: 'a^{[l]} = g(W^{[l]}a^{[l-1]} + b^{[l]})' },
+      ],
+    },
+    'Information Theory': {
+      definition: 'Study of quantification, storage, and communication of information. Core concepts include entropy (measure of uncertainty), mutual information (shared information between variables), and coding theory (efficient, error-correcting codes).',
+      formulas: [
+        'H(X) = -\\sum p(x) \\log p(x) \\text{ (Entropy)}',
+        'I(X;Y) = H(X) - H(X|Y) \\text{ (Mutual Information)}',
+        'C = \\max_{p(x)} I(X;Y) \\text{ (Channel Capacity)}',
+        'H(X,Y) = H(X) + H(Y|X) \\text{ (Joint Entropy)}',
+      ],
+      examples: [
+        { problem: '\\text{Fair coin entropy}', solution: 'H = -2 \\cdot \\frac{1}{2} \\log_2 \\frac{1}{2} = 1 \\text{ bit}' },
+        { problem: '\\text{Binary channel capacity}', solution: 'C = 1 - H(p) \\text{ bits per use}' },
+        { problem: '\\text{Huffman coding efficiency}', solution: '\\text{Average length} \\approx H(X)' },
+      ],
+    },
   },
   'Abstract Algebra': {
     'Group Theory': {
-      definition: 'Group theory studies algebraic structures known as groups, which consist of a set equipped with an operation that combines any two elements to form a third element.',
+      definition: 'Group theory studies algebraic structures known as groups, which consist of a set equipped with an operation that combines any two elements to form a third element. A group (G, ∘) must satisfy closure, associativity, identity, and inverse properties.',
       formulas: [
         '(G, \\circ) \\text{ is a group if: closure, associativity, identity, inverse}',
         '|G| = \\text{order of group G}',
         '\\text{Lagrange: } |H| \\text{ divides } |G| \\text{ for subgroup H}',
+        '\\text{Cayley\'s Theorem: Every group is isomorphic to a permutation group}',
       ],
       examples: [
         { problem: '\\text{Show } (\\mathbb{Z}, +) \\text{ is a group}', solution: '\\text{Satisfies all group axioms}' },
         { problem: '\\text{Order of } \\mathbb{Z}_5', solution: '5' },
+        { problem: '\\text{Subgroups of } \\mathbb{Z}_6', solution: '\\{0\\}, \\{0,2,4\\}, \\{0,3\\}, \\mathbb{Z}_6' },
+      ],
+    },
+    'Ring Theory': {
+      definition: 'A ring is an algebraic structure consisting of a set equipped with two binary operations: addition (forming an abelian group) and multiplication (forming a semigroup), connected by distributive laws. Examples include integers, polynomials, and matrices.',
+      formulas: [
+        '(R, +, \\cdot) \\text{ with } (R, +) \\text{ abelian group and distributive laws}',
+        '\\text{Commutative ring: } ab = ba',
+        '\\text{Ring with unity: contains multiplicative identity 1}',
+        '\\text{Integral domain: commutative ring with unity and no zero divisors}',
+      ],
+      examples: [
+        { problem: '\\text{Show } \\mathbb{Z} \\text{ is a ring}', solution: '\\text{Addition forms group, multiplication associative, distributive}' },
+        { problem: '\\text{Units in } \\mathbb{Z}_6', solution: '\\{1, 5\\}' },
+        { problem: '\\text{Zero divisors in } \\mathbb{Z}_6', solution: '\\{2, 3, 4\\}' },
+      ],
+    },
+    'Field Theory': {
+      definition: 'A field is a ring where every nonzero element has a multiplicative inverse, and both addition and multiplication are commutative. Fields include rational, real, complex numbers, and finite fields. Field extensions study larger fields containing smaller ones.',
+      formulas: [
+        '(F, +, \\cdot) \\text{ where } (F\\setminus\\{0\\}, \\cdot) \\text{ is abelian group}',
+        '[F:K] = \\text{degree of field extension } F/K',
+        '\\text{Minimal polynomial: monic irreducible polynomial of element}',
+        '\\text{Finite field: } |\\mathbb{F}_{p^n}| = p^n',
+      ],
+      examples: [
+        { problem: '\\text{Show } \\mathbb{Q}(\\sqrt{2}) \\text{ is a field}', solution: '\\text{Every nonzero element has inverse}' },
+        { problem: '[\\mathbb{Q}(\\sqrt{2}) : \\mathbb{Q}]', solution: '2' },
+        { problem: '\\text{Minimal polynomial of } \\sqrt{2} \\text{ over } \\mathbb{Q}', solution: 'x^2 - 2' },
+      ],
+    },
+    'Module Theory': {
+      definition: 'Module theory generalizes vector spaces by allowing scalars to come from a ring instead of a field. A module is an abelian group with a ring action satisfying distributive and associative properties. Modules are to rings what vector spaces are to fields.',
+      formulas: [
+        'M \\text{ is } R\\text{-module with action } R \\times M \\to M',
+        'r(m + n) = rm + rn \\text{ and } (r + s)m = rm + sm',
+        '\\text{Free module: has basis like vector space}',
+        '\\text{Torsion element: } rm = 0 \\text{ for some nonzero } r',
+      ],
+      examples: [
+        { problem: '\\text{Show } \\mathbb{Z}_n \\text{ is } \\mathbb{Z}\\text{-module}', solution: '\\text{Satisfies module axioms}' },
+        { problem: '\\text{Classify } \\mathbb{Z}\\text{-modules of order 12}', solution: '\\mathbb{Z}_{12}, \\mathbb{Z}_4 \\oplus \\mathbb{Z}_3, \\mathbb{Z}_2 \\oplus \\mathbb{Z}_6, \\mathbb{Z}_2^2 \\oplus \\mathbb{Z}_3' },
+      ],
+    },
+    'Galois Theory': {
+      definition: 'Galois Theory connects field extensions with group theory through automorphism groups. It determines solvability of polynomials by radicals and establishes correspondence between intermediate fields and subgroups of the Galois group.',
+      formulas: [
+        '\\text{Gal}(E/F) = \\{\\sigma: E \\to E \\mid \\sigma \\text{ fixes } F\\}',
+        '\\text{Fundamental Theorem: bijection between intermediate fields and subgroups}',
+        '\\text{Solvable by radicals } \\Leftrightarrow \\text{ solvable Galois group}',
+        '|\\text{Gal}(E/F)| = [E:F] \\text{ for Galois extensions}',
+      ],
+      examples: [
+        { problem: '\\text{Gal}(\\mathbb{Q}(\\sqrt{2})/\\mathbb{Q})', solution: '\\mathbb{Z}_2' },
+        { problem: '\\text{Gal}(\\mathbb{Q}(\\sqrt[3]{2}, \\omega)/\\mathbb{Q})', solution: 'S_3' },
+        { problem: '\\text{Is } x^5 - x - 1 \\text{ solvable by radicals?}', solution: '\\text{No, Galois group is } S_5' },
+      ],
+    },
+    'Category Theory': {
+      definition: 'Category theory studies mathematical structures and relationships between them abstractly. A category consists of objects and morphisms (arrows) with composition and identity. It provides a unifying framework connecting all areas of mathematics.',
+      formulas: [
+        '\\text{Category: objects + morphisms + composition + identities}',
+        '\\text{Functor: structure-preserving map between categories}',
+        '\\text{Natural transformation: systematic way to transform functors}',
+        '\\text{Yoneda Lemma: objects determined by morphisms to them}',
+      ],
+      examples: [
+        { problem: '\\text{Category } \\mathbf{Set}', solution: '\\text{Objects: sets, Morphisms: functions}' },
+        { problem: '\\text{Functor } F: \\mathbf{Grp} \\to \\mathbf{Set}', solution: '\\text{Forgetful functor (groups to underlying sets)}' },
+        { problem: '\\text{Product in category}', solution: '\\text{Universal object with projections}' },
       ],
     },
   },
   'Real & Complex Analysis': {
     'Metric Spaces': {
-      definition: 'A metric space is a set equipped with a metric (distance function) that defines the distance between any two points in the set.',
+      definition: 'A metric space is a set equipped with a metric (distance function) that defines the distance between any two points in the set. Metric spaces generalize our notion of distance and form the foundation for topology and analysis.',
       formulas: [
         'd(x,y) = d(y,x) \\text{ (Symmetry)}',
         'd(x,z) \\leq d(x,y) + d(y,z) \\text{ (Triangle Inequality)}',
         'd(x,y) = 0 \\iff x = y \\text{ (Identity)}',
+        'd(x,y) \\geq 0 \\text{ (Non-negativity)}',
       ],
       examples: [
         { problem: '\\text{Euclidean metric: } d(x,y) = \\sqrt{\\sum(x_i-y_i)^2}', solution: '\\text{Standard distance formula}' },
-      ],
-    },
-  },
-  'Machine Learning Mathematics': {
-    'Gradient Descent': {
-      definition: 'Gradient descent is an optimization algorithm used to minimize a function by iteratively moving in the direction of steepest descent.',
-      formulas: [
-        '\\theta_{t+1} = \\theta_t - \\alpha \\nabla J(\\theta_t)',
-        '\\alpha = \\text{learning rate}',
-        '\\nabla J = \\text{gradient of cost function}',
-      ],
-      examples: [
-        { problem: '\\text{Update rule for linear regression}', solution: '\\theta_j := \\theta_j - \\alpha \\frac{\\partial J}{\\partial \\theta_j}' },
+        { problem: '\\text{Manhattan metric: } d(x,y) = \\sum|x_i - y_i|', solution: '\\text{Taxicab distance}' },
+        { problem: '\\text{Discrete metric}', solution: 'd(x,y) = 0 \\text{ if } x = y, \\text{ else } 1' },
       ],
     },
   },
