@@ -1,3 +1,4 @@
+
 import { ReactNode } from 'react';
 import { BookOpen, Zap, Calculator, BarChart2, Cpu, Activity, Code, Layers, TrendingUp, CircleDot } from 'lucide-react';
 
@@ -30,6 +31,15 @@ export const domains: Domain[] = [
   { id: 'mathematical-physics', name: 'Mathematical Physics', icon: <Activity /> },
   { id: 'chaos', name: 'Chaos Theory & Dynamical Systems', icon: <TrendingUp /> },
   { id: 'machine-learning', name: 'Mathematics of Machine Learning', icon: <Layers /> },
+  { id: 'linear-algebra', name: 'Linear Algebra', icon: <Calculator /> },
+  { id: 'discrete-mathematics', name: 'Discrete Mathematics', icon: <Code /> },
+  { id: 'differential-equations', name: 'Differential Equations', icon: <Activity /> },
+  { id: 'real-complex-analysis', name: 'Real & Complex Analysis', icon: <BookOpen /> },
+  { id: 'topology', name: 'Topology', icon: <CircleDot /> },
+  { id: 'differential-geometry', name: 'Differential Geometry', icon: <TrendingUp /> },
+  { id: 'measure-theory', name: 'Measure Theory & Integration', icon: <BarChart2 /> },
+  { id: 'functional-analysis', name: 'Functional Analysis', icon: <Layers /> },
+  { id: 'abstract-algebra', name: 'Abstract Algebra', icon: <Calculator /> },
 ];
 
 const topicContentDatabase: Record<string, Record<string, TopicContent>> = {
