@@ -1,4 +1,3 @@
-
 import { ReactNode } from 'react';
 import { BookOpen, Zap, Calculator, BarChart2, Cpu, Activity, Code, Layers, TrendingUp, CircleDot } from 'lucide-react';
 
