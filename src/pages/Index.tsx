@@ -8,6 +8,7 @@ import VantaBackground from '../components/VantaBackground';
 import CommandBar from '../components/CommandBar';
 import FuturisticCard from '../components/FuturisticCard';
 import { Button } from '@/components/ui/button';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 const Index = () => {
   const [currentMode, setCurrentMode] = useState<'solve' | 'learn' | 'graph'>('solve');
@@ -100,21 +101,23 @@ const Index = () => {
           </div>
         </header>
 
-        {/* Main Content */}
-        <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="transition-all duration-500 ease-in-out animate-fade-in">
-            {currentMode === 'solve' && (
-              <FuturisticCard glow>
-                <SolveMode />
-              </FuturisticCard>
-            )}
-            {currentMode === 'learn' && (
-              <FuturisticCard glow>
-                <LearnMode />
-              </FuturisticCard>
-            )}
-            {currentMode === 'graph' && <EnhancedGraph />}
-          </div>
+        {/* Main Content with Scroll Area */}
+        <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 h-[calc(100vh-8rem)]">
+          <ScrollArea className="h-full w-full">
+            <div className="transition-all duration-500 ease-in-out animate-fade-in pr-4">
+              {currentMode === 'solve' && (
+                <FuturisticCard glow>
+                  <SolveMode />
+                </FuturisticCard>
+              )}
+              {currentMode === 'learn' && (
+                <FuturisticCard glow>
+                  <LearnMode />
+                </FuturisticCard>
+              )}
+              {currentMode === 'graph' && <EnhancedGraph />}
+            </div>
+          </ScrollArea>
         </main>
 
         {/* Command Bar */}
