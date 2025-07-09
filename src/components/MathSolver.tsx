@@ -17,6 +17,65 @@ const MathSolver: React.FC<MathSolverProps> = ({ domain, subtopic }) => {
   const [steps, setSteps] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [showGraph, setShowGraph] = useState(false);
+  const [graphExpression, setGraphExpression] = useState('');
+
+  // Enhanced function to detect if expression should be graphed
+  const shouldShowGraph = (expression: string, domain: string): boolean => {
+    // Always show graph for Graphing domain
+    if (domain === 'Graphing') return true;
+    
+    // Check if expression contains variables (x, y, etc.)
+    if (/[xy]/i.test(expression)) return true;
+    
+    // Check for common mathematical functions that can be graphed
+    const graphableFunctions = [
+      'sin', 'cos', 'tan', 'sec', 'csc', 'cot',
+      'log', 'ln', 'exp', 'sqrt', 'abs',
+      'asin', 'acos', 'atan'
+    ];
+    
+    for (const func of graphableFunctions) {
+      if (expression.toLowerCase().includes(func)) return true;
+    }
+    
+    // Check for polynomial patterns (numbers with x)
+    if (/\d*x(\^?\d+)?/.test(expression)) return true;
+    
+    // Check for equations (contains =)
+    if (expression.includes('=')) return true;
+    
+    return false;
+  };
+
+  // Extract graphable expression from input
+  const extractGraphExpression = (input: string, domain: string): string => {
+    // For equations, try to extract the right side or convert to standard form
+    if (input.includes('=')) {
+      const parts = input.split('=');
+      if (parts.length === 2) {
+        // Try to graph y = f(x) form
+        const leftSide = parts[0].trim();
+        const rightSide = parts[1].trim();
+        
+        if (leftSide === 'y' || leftSide === 'f(x)') {
+          return rightSide;
+        } else if (rightSide === 'y' || rightSide === 'f(x)') {
+          return leftSide;
+        } else {
+          // For equations like x^2 + y^2 = 1, return as implicit function
+          return input;
+        }
+      }
+    }
+    
+    // For derivatives, graph both original and derivative
+    if (input.startsWith('derivative') || input.startsWith('d/dx')) {
+      const expr = input.replace(/derivative\(|\)|d\/dx\s*/g, '');
+      return expr; // Graph the original function
+    }
+    
+    return input;
+  };
 
   const solveProblem = async () => {
     if (!input.trim()) return;
@@ -25,6 +84,7 @@ const MathSolver: React.FC<MathSolverProps> = ({ domain, subtopic }) => {
     setResult(null);
     setSteps([]);
     setShowGraph(false);
+    setGraphExpression('');
 
     try {
       let solution;
@@ -71,9 +131,12 @@ const MathSolver: React.FC<MathSolverProps> = ({ domain, subtopic }) => {
         calculationSteps = [`Input: ${input}`, `Result: ${solution}`];
       }
 
-      // Check if we should show a graph
-      if (domain === 'Graphing' || (typeof input === 'string' && input.includes('x'))) {
+      // Enhanced graph detection and display
+      if (shouldShowGraph(input, domain)) {
+        const graphExpr = extractGraphExpression(input, domain);
+        setGraphExpression(graphExpr);
         setShowGraph(true);
+        calculationSteps.push(`Graph: Displaying visualization of ${graphExpr}`);
       }
 
       setResult(solution);
@@ -163,13 +226,13 @@ const MathSolver: React.FC<MathSolverProps> = ({ domain, subtopic }) => {
       )}
 
       {/* Graph Display */}
-      {showGraph && (
+      {showGraph && graphExpression && (
         <div className="backdrop-blur-sm bg-white/10 rounded-xl p-6 border border-white/20 shadow-xl">
           <div className="flex items-center mb-4">
             <TrendingUp className="h-5 w-5 mr-2 text-green-400" />
-            <h4 className="text-lg font-semibold text-white">Graph</h4>
+            <h4 className="text-lg font-semibold text-white">Graph Visualization</h4>
           </div>
-          <GraphDisplay expression={input} />
+          <GraphDisplay expression={graphExpression} />
         </div>
       )}
     </div>
